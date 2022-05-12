@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Note</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+</head>
+<body>
+
+<div class="container">
+
+    <h3>Add New Note</h3>
+    <hr/>
+
+    <form th:action="@{/addNote}" th:object="${note}" method="POST">
+
+        <textarea  style="resize:none" rows="5" cols="50" th:field="*{content}" class="form-control col-4 mb-4" placeholder="Enter Content" ></textarea>
+
+        <button type="submit" class="btn btn-primary col-2">Save</button>
+        <input type="hidden" th:field="*{id}" />
+    </form>
+    <hr/>
+    <a th:href="@{/notes}">Back to list</a>
+</div>
+
+</body>
+</html>

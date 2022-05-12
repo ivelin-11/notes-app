@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+         .error {
+              color: red;
+          }
+    </style>
+</head>
+
+<body>
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h2>User Login</h2>
+            <form th:action="@{/login}" th:object="${userLoginDTO}" method="post">
+                <div class="form-row">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="col-md-6 form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" th:field="*{email}"
+                                           placeholder="youremail@example.com" size = "70">
+                                </div>
+                                <p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}">Email
+                                    error</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="col-md-6 form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" th:field="*{password}"
+                                           placeholder="Password...">
+                                </div>
+                                <p th:if="${#fields.hasErrors('password')}"  th:errorclass="error" th:errors="*{password}">Password error</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                        <td><p th:if="${#fields.hasErrors('wrongUser')}"  th:errorclass="error" th:errors="*{wrongUser}">User Login error</p>
+                        </td>
+                    </tr>
+                    </table>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mt-3">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
